@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ace="http://www.icefaces.org/icefaces/components"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+    <title>Лабка 3</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="scriptsForMainPage.js"></script>
+    <link rel="stylesheet" href="mainPageStyles.css"/>
+</h:head>
+<h:body id="body">
+    <h:form id="linkForm">
+        <h:commandLink id="link"
+                       action="success">
+            <h:outputText value="Стартовая страница"/>
+        </h:commandLink>
+    </h:form>
+
+    <h:panelGrid columns="2" id="topTable">
+        <h:form id="coordsForm">
+            <p>
+                <h:outputLabel id="rLabel" for="rMenu" value="Радиус R:"/>
+                <h:selectOneMenu id="rMenu"
+                                 value="#{hitChecker.r}">
+                    <f:selectItems
+                            id="rItems"
+                            value="#{hitChecker.radii}"/>
+                </h:selectOneMenu>
+            </p>
+
+            <p>
+                <h:outputLabel id="xLabel" for="xSlider" value="Координата X:"/>
+                <ace:sliderEntry id="xSlider"
+                                 value="#{hitChecker.sliderX}"
+                                 clickableRail="true"
+                                 showLabels="true"
+                                 max="2"
+                                 min="-2"
+                                 stepPercent="25"
+                                 styleClass="slider">
+                    <ace:ajax render="xValue" execute="@this" event="slide"/>
+                </ace:sliderEntry>
+                <h:outputText id="xValue" value="#{hitChecker.sliderX}"/>
+            </p>
+
+            <p>
+                <h:outputLabel id="yLabel" for="yText" value="Координата Y:"/>
+            </p>
+            <p>
+                <h:inputText id="yText"
+                             value="#{hitChecker.y}"
+                             p:placeholder="Введите число от -3 до 5"
+                             p:type="number"
+                             p:step="any"
+                             required="true"
+                             requiredMessage="Необходимо ввести координату Y"
+                             validatorMessage="Значение координаты Y должно принадлежать диапазону [-3;5]">
+                    <f:validateDoubleRange minimum="-3"
+                                           maximum="5"/>
+                </h:inputText>
+            </p>
+            <p>
+                <h:commandButton id="formButton" value="Отправить">
+                    <f:ajax event="click"
+                            execute="@form"
+                            render="yErrorMessage :clickCoords:clickResult resultsTable icewhatswrongwithyou"
+                            listener="#{hitChecker.checkHit}"
+                            onerror="formAjaxCreateNewDot"/>
+                </h:commandButton>
+            </p>
+            <p><h:message for="yText" id="yErrorMessage" /></p>
+            <h:inputHidden id="icewhatswrongwithyou" value="#{hitChecker.iceBypass}"/>
+        </h:form>
+
+        <h:panelGrid id="svgTable" columns="1" styleClass="topTableElement">
+            <svg xmlns="http://www.w3.org/2000/svg" id="svg" width="560" height="560" style="border: 2px solid #000000">
+                <marker id="arrow" refX="3" refY="3" markerWidth="6"
+                        markerHeight="6" orient="auto">
+                    <path d="M 0 0 L 6 3 0 6 z"/>
+                </marker>
+
+                <circle id="zoneCircle" r="22.5" cx="280" cy="280" fill="#818AEC" stroke-width="0"/>
+                <rect id="whiteRect" x="235" y="235" height="45" width="45" fill="white"/>
+                <rect id="whiteRect1" x="235" y="280" height="45" width="45" fill="white"/>
+                <rect id="zoneRect" x="280" y="235" width="45" height="45" fill="#818AEC"
+                      stroke-width="0"/>
+
+                <path id="zoneTriangle" d="M 280 280 L 280 325 257.5 280 z" fill="#818AEC" stroke-width="0"/>
+
+                <line id="lineY" x1="280" y1="560" x2="280" y2="5"
+                      stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+                <line id="lineX" x1="0" y1="280" x2="555" y2="280"
+                      stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+                <text x="270" y="300" font-size="15" >0</text>
+                <text x="545" y="270" font-size="16" >X</text>
+                <text id="posX" x="325" y="270" font-size="14" >1</text>
+                <text id="posX/2" x="302.5" y="270" font-size="14" >0.5</text>
+                <line id="posXLine" x1="325" y1="272" x2="325" y2="288"
+                      stroke="black" stroke-width="2"/>
+                <line id="posX/2Line" x1="302.5" y1="272" x2="302.5" y2="288"
+                      stroke="black" stroke-width="2"/>
+
+                <text id="negX" x="235" y="270" font-size="14" >-1</text>
+                <text id="negX/2" x="257.5" y="270" font-size="14" >-0.5</text>
+                <line id="negXLine" x1="235" y1="272" x2="235" y2="288"
+                      stroke="black" stroke-width="2"/>
+                <line id="negX/2Line" x1="257.5" y1="272" x2="257.5" y2="288"
+                      stroke="black" stroke-width="2"/>
+
+                <text x="290" y="20" font-size="16" >Y</text>
+                <text id="posY" x="290" y="235" font-size="14" >1</text>
+                <text id="posY/2" x="290" y="257.5" font-size="14" >0.5</text>
+                <line id="posYLine" x1="272" y1="235" x2="288" y2="235"
+                      stroke="black" stroke-width="2"/>
+                <line id="posY/2Line" x1="272" y1="257.5" x2="288" y2="257.5"
+                      stroke="black" stroke-width="2"/>
+
+                <text id="negY" x="290" y="325" font-size="14" >-1</text>
+                <text id="negY/2" x="290" y="302.5" font-size="14" >-0.5</text>
+                <line id="negYLine" x1="272" y1="325" x2="288" y2="325"
+                      stroke="black" stroke-width="2"/>
+                <line id="negY/2Line" x1="272" y1="302.5" x2="288" y2="302.5"
+                      stroke="black" stroke-width="2"/>
+                <circle r="5" id="newDot" fill="none"/>
+            </svg>
+
+            <h:form id="clickCoords" >
+                <h:inputHidden id="clickX" value="#{hitChecker.x}"/>
+                <h:inputHidden id="clickY" value="#{hitChecker.y}"/>
+                <h:inputHidden id="realClickX" value="#{hitChecker.x}"/>
+                <h:inputHidden id="realClickY" value="#{hitChecker.y}"/>
+                <h:inputHidden id="radius" value="#{hitChecker.r}"/>
+                <h:inputHidden id="clickResult" value="#{hitChecker.boolResult}"/>
+                <h:outputText id="mouseCoords" value="Вы можете выбрать координаты точки, кликнув по графику"/>
+                <h:commandButton id="clickButton" style="display: none">
+                    <f:ajax event="click" execute="clickX clickY radius"
+                            render="clickResult resultsTable realClickX realClickY"
+                            listener="#{hitChecker.checkHit}"
+                            onerror="clickAjaxCreateDot"/>
+                </h:commandButton>
+            </h:form>
+        </h:panelGrid>
+    </h:panelGrid>
+
+    <h:dataTable id="resultsTable"
+                 value="#{resultsListManager.resultsList}"
+                 var="row"
+                 columnClasses="1,2,3,4,5,6,columnToHide">
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Дата и время запроса"/>
+            </f:facet>
+            <h:outputText value="#{row.timeOfRequest}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Время работы скрипта"/>
+            </f:facet>
+            <h:outputText value="#{row.workTime}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="R"/>
+            </f:facet>
+            <h:outputText value="#{row.r}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="X"/>
+            </f:facet>
+            <h:outputText value="#{row.x}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Y"/>
+            </f:facet>
+            <h:outputText value="#{row.y}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Результат"/>
+            </f:facet>
+            <h:outputText value="#{row.result}"/>
+        </h:column>
+
+        <h:column>
+            <h:outputText value="#{row.boolResult}"/>
+        </h:column>
+
+        <f:facet name="caption">
+            <h:outputText value="#{hitChecker.lastResult}"/>
+        </f:facet>
+    </h:dataTable>
+</h:body>
+</html>

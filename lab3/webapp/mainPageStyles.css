@@ -1,0 +1,88 @@
+* {
+    font-family: serif;
+}
+
+#topTable{
+    width: 100%;
+}
+
+#coordsForm,
+#svgTable {
+    width: 50%;
+}
+
+#coordsForm\:rMenu {
+    margin: 5px;
+    width: 35px;
+}
+
+.ice-ace-slider-label-left,
+.ice-ace-slider-label-right{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#coordsForm\:xValue{
+    margin-left: 95px;
+    font-weight: bold;
+}
+
+#coordsForm\:yText{
+    width: 155px;
+}
+
+#coordsForm\:formButton{
+    width: 163px;
+    background-color: #e4373d;
+    color: #ffffff;
+}
+
+#coordsForm\:yErrorMessage{
+    color: red;
+}
+
+#svg {
+    cursor: pointer;
+}
+
+#mouseX,
+#mouseY {
+    font-weight: bold;
+}
+
+#resultsTable {
+    border-collapse: collapse;
+    margin: 10px;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    width: 90%;
+}
+
+#resultsTable thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+#resultsTable th,
+#resultsTable td {
+    padding: 12px 15px;
+    height: 10px;
+}
+
+#resultsTable tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+#resultsTable tbody tr:hover {
+    color: #009879;
+}
+
+.columnToHide {
+    visibility: collapse;
+}
+
+#resultsTable caption {
+    font-size: 1.1em;
+    font-weight: bold;
+}

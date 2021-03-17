@@ -1,0 +1,18 @@
+* {
+    font-family: serif;
+}
+
+#contentDiv {
+    width: 200px;
+    height: 220px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -110px 0 0 -100px;
+}
+
+#clock,
+#header,
+#form{
+    text-align: center;
+}

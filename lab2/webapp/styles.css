@@ -1,0 +1,130 @@
+* {
+    font-family: serif;
+}
+
+#header {
+    font-size: 18px;
+    color: #61605f;
+}
+
+.non-displayedMessage{
+    visibility: collapse;
+}
+
+.displayedMessage{
+    visibility: visible;
+}
+
+#mainTable {
+    width: 100%;
+}
+
+#mainTable tr td {
+    padding: 10px 15px;
+}
+
+#formCell{
+    width: 25%
+}
+
+#tablePart{
+    width: 40%;
+}
+
+#imgPart {
+    width: 35%;
+}
+
+#lastResult {
+    text-align: center;
+    font-size: 1.1em;
+    padding: 10px;
+}
+
+#form{
+    font-size: 1.05em;
+}
+
+#radiusTd {
+    width: 60%;
+}
+
+#xTd {
+    width: 60%;
+}
+
+.radioLabel {
+    text-align: left;
+    display: inline-block;
+    width: 45px;
+}
+
+#textCell {
+    width: 52%;
+    height: 80px;
+}
+
+#coordY {
+    width: 180px;
+}
+
+.excl {
+    width: 20px;
+    height: 20px;
+}
+
+#radiusError,
+#xError,
+#yError {
+    color: red;
+}
+
+#submitSpan {
+    padding-left: 16px;
+}
+#submit {
+    width: 190px;
+    background-color: #e4373d;
+    color: #ffffff;
+
+}
+
+.readyForClicking {
+    cursor: pointer;
+}
+#mouseCoord {
+    font-size: 1.2em;
+}
+
+#mouseX,
+#mouseY {
+    font-weight: bold;
+}
+
+#tableWithResults {
+    border-collapse: collapse;
+    margin: 10px;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    width: 95%;
+}
+
+#tableWithResults thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+#tableWithResults th,
+#tableWithResults td {
+    padding: 12px 15px;
+    height: 10px;
+}
+
+#tableWithResults tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+#tableWithResults tbody tr:hover {
+    color: #009879;
+}

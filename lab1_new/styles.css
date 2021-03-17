@@ -1,0 +1,83 @@
+body div,
+header {
+    text-align: center;
+}
+
+#header > p{
+    font-size: 16px;
+    color: #61605f;
+    font-family: cursive;
+}
+
+#form{
+    font-family: serif;
+}
+.radioLabel {
+    text-align: left;
+    display: inline-block;
+    width: 45px;
+}
+
+.non-displayedMessage{
+    visibility: collapse;
+}
+
+.displayedMessage{
+    visibility: visible;
+}
+
+#textTable {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input[type="submit"] {
+    width: 100px;
+    background-color: #e4373d;
+    color: #ffffff;
+    margin: 10px;
+}
+
+#textErrorMessage {
+    margin: 10px;
+    color: red;
+}
+
+#excl {
+    width: 20px;
+    height: 20px;
+}
+
+#lastResult {
+    font-size: 1.1em;
+    padding: 10px;
+}
+
+#tableWithResults {
+    border-collapse: collapse;
+    font-size: 0.8em;
+    font-family: sans-serif;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#tableWithResults thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+#tableWithResults th,
+#tableWithResults td {
+    padding: 12px 15px;
+    height: 10px;
+}
+
+#tableWithResults tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+#tableWithResults tbody tr:hover {
+    color: #009879;
+}
