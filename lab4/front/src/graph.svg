@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="svg" width="100%" height="100%" viewBox="0 0 560 560"
+     style="border: 2px solid #000000">
+    <marker id="arrow" refX="3" refY="3" markerWidth="6"
+            markerHeight="6" orient="auto">
+        <path d="M 0 0 L 6 3 0 6 z"/>
+    </marker>
+
+    <circle id="zoneCircle" r="112.5" cx="280" cy="280" fill="#818AEC" stroke-width="0"/>
+    <rect id="whiteRect" x="55" y="280" height="225" width="225" fill="white"/>
+    <rect id="whiteRect1" x="280" y="55" height="225" width="225" fill="white"/>
+    <rect id="zoneRect" x="280" y="280" width="225" height="225" fill="#818AEC"
+          stroke-width="0"/>
+
+    <path id="zoneTriangle" d="M 280 280 L 280 167.5 505 280 z" fill="#818AEC" stroke-width="0"/>
+
+    <line id="lineY" x1="280" y1="560" x2="280" y2="5"
+          stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+    <line id="lineX" x1="0" y1="280" x2="555" y2="280"
+          stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="270" y="300" font-size="15">0</text>
+    <text x="545" y="270" font-size="16">X</text>
+    <text id="posX" x="505" y="270" font-size="16">1</text>
+    <text id="posX/2" x="392.5" y="270" font-size="16">0.5</text>
+    <line id="posXLine" x1="505" y1="272" x2="505" y2="288"
+          stroke="black" stroke-width="2"/>
+    <line id="posX/2Line" x1="392.5" y1="272" x2="392.5" y2="288"
+          stroke="black" stroke-width="2"/>
+
+    <text id="negX" x="55" y="270" font-size="16">-1</text>
+    <text id="negX/2" x="167.5" y="270" font-size="16">-0.5</text>
+    <line id="negXLine" x1="55" y1="272" x2="55" y2="288"
+          stroke="black" stroke-width="2"/>
+    <line id="negX/2Line" x1="167.5" y1="272" x2="167.5" y2="288"
+          stroke="black" stroke-width="2"/>
+
+    <text x="290" y="20" font-size="16">Y</text>
+    <text id="posY" x="290" y="55" font-size="16">1</text>
+    <text id="posY/2" x="290" y="167.5" font-size="16">0.5</text>
+    <line id="posYLine" x1="272" y1="55" x2="288" y2="55"
+          stroke="black" stroke-width="2"/>
+    <line id="posY/2Line" x1="272" y1="167.5" x2="288" y2="167.5"
+          stroke="black" stroke-width="2"/>
+
+    <text id="negY" x="290" y="505" font-size="16">-1</text>
+    <text id="negY/2" x="290" y="392.5" font-size="16">-0.5</text>
+    <line id="negYLine" x1="272" y1="505" x2="288" y2="505"
+          stroke="black" stroke-width="2"/>
+    <line id="negY/2Line" x1="272" y1="392.5" x2="288" y2="392.5"
+          stroke="black" stroke-width="2"/>
+    <circle r="5" id="newDot" fill="none"/>
+</svg>
